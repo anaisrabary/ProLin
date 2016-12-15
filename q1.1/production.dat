@@ -1,0 +1,26 @@
+set MOIS 	:=  janvier fevrier mars avril mai juin;
+
+set HUILES_VEGETALES 	:= VEG1 VEG2;
+set HUILES_ANIMALES 	:= ANI1 ANI2 ANI3;
+
+param prix_achat:
+		janvier	fevrier	mars	avril	mai		juin :=
+VEG1	110		130		110		120		100		90
+VEG2	120		130		140		110		120		100		
+ANI1	130		110		130		120		150		140
+ANI2	110		90		100		120		110		80
+ANI3	115		115		95		125		105		135;
+
+param prix_vente 	:= 150;
+param raf_max_vege 	:= 200;
+param raf_max_anim 	:= 250;
+
+param durete :=
+VEG1	8.8 
+VEG2 	6.1
+ANI1 	2.0
+ANI2 	4.2
+ANI3	5.0; 
+
+param durete_max = 6.0;
+param durete_min = 3.0;
