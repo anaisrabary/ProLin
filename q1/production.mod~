@@ -8,10 +8,13 @@ param prix_vente 	>= 0;
 param raf_max_vege 	>= 0;
 param raf_max_anim 	>= 0;
 
+<<<<<<< HEAD
 param durete_min >= 0;
 param durete_max >= durete_min;
 param durete { TYPES } >= 0;
 
+=======
+>>>>>>> 8f24f22992eaf6ea1e566f5ab04710689469b582
 var quantite_vendue { MOIS, TYPES } >= 0; 
 
 maximize profit :

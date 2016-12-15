@@ -1,0 +1,18 @@
+option solver cplex ;
+
+reset ;
+model production.mod ;
+data production.dat ;
+solve ;
+
+# Ajouter ici l'affichage de votre programme...
+/*
+display { m in MOIS, t in TYPES } quantite_vendue[m, t];
+display { m in MOIS} quantite_total [m];
+display { m in MOIS, t in TYPES } quantite_stock [m, t];
+display { m in MOIS, t in TYPES } quantite_achat [m, t];
+
+display { m in MOIS } (sum { t in TYPES } (quantite_vendue[m, t] * durete[t])) / quantite_total[m];
+*/
+
+display evolution;
