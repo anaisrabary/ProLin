@@ -1,0 +1,9 @@
+option solver cplex ;
+
+reset ;
+model production.mod ;
+data production.dat ;
+solve ;
+
+# Ajouter ici l'affichage de votre programme...
+display { m in MOIS, t in TYPES } quantite_vendue[m, t];

@@ -1,0 +1,48 @@
+set MOIS 	:=  janvier fevrier mars avril mai juin;
+
+set HUILES_VEGETALES 	:= VEG1 VEG2;
+set HUILES_ANIMALES 	:= ANI1 ANI2 ANI3;
+set LINKS :=
+	(janvier,*)	VEG1	VEG2	ANI1	ANI2	ANI3
+	(fevrier,*)	VEG1	VEG2	ANI1	ANI2	ANI3
+	(mars,*)	VEG1	VEG2	ANI1	ANI2	ANI3
+	(avril,*)	VEG1	VEG2	ANI1	ANI2	ANI3
+	(mai,*)		VEG1	VEG2	ANI1	ANI2	ANI3
+	(juin,*)	VEG1	VEG2	ANI1	ANI2	ANI3
+;
+
+
+param prix_achat := 
+	janvier VEG1 110	janvier VEG2 120	janvier ANI1 130 	janvier ANI2 110 	janvier ANI3 115
+	fevrier VEG1 130	fevrier VEG2 130	fevrier ANI1 110	fevrier ANI2 90		fevrier ANI3 115
+	mars VEG1 110		mars VEG2 140		mars ANI1 130		mars ANI2 100		mars ANI3 95
+	avril VEG1 120		avril VEG2 110		avril ANI1 120		avril ANI2 120		avril ANI3 125
+	mai VEG1 100		mai VEG2 120		mai ANI1 150		mai ANI2 110		mai ANI3 105
+	juin VEG1 90		juin VEG2 100		juin ANI1 140		juin ANI2 80		juin ANI3 135
+;
+
+/*			VEG1 	VEG2 	ANI1 	ANI2 	ANI3 :=
+janvier 	110		120		130		110		115
+fevrier 	130		130		110		90		115
+mars 		110		140		130		100		95
+avril		120		110		120		120		125
+mai			100		120		150		110		105
+juin		90		100		140		80		135
+;*/
+
+
+param prix_vente 	:= 150;
+param raf_max_vege 	:= 200;
+param raf_max_anim 	:= 250;
+
+/*param stock_max := 1000;
+param cout_stock := 5;
+
+
+param durete :=
+VEG1	8.8 
+VEG2 	6.1
+ANI1 	2.0
+ANI2 	4.2
+ANI3	5.0; */
+
