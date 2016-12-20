@@ -1,0 +1,29 @@
+data;
+set mois:= janvier février mars avril mai juin;
+set huile_veg:= VEG1 VEG2;
+set huile_ani:=ANI1 ANI2 ANI3;
+param prix_veg {mois,huile_veg};
+param prix_veg: VEG1 VEG2 :=
+		janvier 110 120  
+		février 130	130	 
+		mars    110 140 
+		avril   120 110  
+		mai     100 120  
+		juin    90  100  ;
+param prix_ani {mois,huile_ani};
+param prix_ani:	ANI1 ANI2 ANI3 :=
+	janvier		130 110 115
+	février		110 90	115
+	mars		130 110 95
+	avril 		120 120 125
+	mai			150 110 105
+	juin		140 80 135;
+param vente :=150;
+param stockmax :=1000;
+param durete {huile};
+param durete:=
+VEG1 8.8
+VEG2 6.1
+ANI1 2.0
+ANI2 4.2
+ANI3 5.0;

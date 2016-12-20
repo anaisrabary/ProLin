@@ -15,10 +15,8 @@ param durete_max >= 0;
 param stock_actuel >= 0;			# chaque huiles
 param stock_max >=  stock_actuel; 	# chaque huiles
 param cout_stock >= 0;				# par tonne et par mois	
-
-param evolution{TYPES, MOIS} >= 0;
  	
-var quantite_stock { 0 .. 6, TYPES } >= 0;
+var quantite_stock { MOIS, TYPES } >= 0;
 var quantite_vendue { MOIS, TYPES } >= 0;
 var quantite_achat { MOIS, TYPES } >= 0;
 
@@ -42,13 +40,10 @@ subject to durete_produit_max { m in MOIS }:
 	
 subject to max_stock {m in MOIS, t in TYPES}:
 	quantite_stock [m, t] <= stock_max;
-
-subject to stock_init {t in TYPES}:
-	quantite_stock [0, t] = stock_actuel;
 	
 subject to stock_final {t in TYPES}:
-	quantite_stock[6, t] = stock_actuel;
+	quantite_stock[last(MOIS), t] = stock_actuel;
 	
 subject to equilibre_stock{ m in MOIS, t in TYPES }:
-	quantite_stock[m-1, t] + quantite_achat[m, t] - quantite_vendue[m,t] = quantite_stock[m, t];
+	(if m == first(MOIS) then stock_actuel else quantite_stock[prev(m, MOIS), t]) + quantite_achat[m, t] - quantite_vendue[m,t] = quantite_stock[m, t];
 	

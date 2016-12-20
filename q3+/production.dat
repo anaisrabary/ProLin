@@ -1,10 +1,10 @@
-set MOIS 	:=  1 2 3 4 5 6;
+set MOIS 	:=  janvier fevrier mars avril mai juin;
 
 set HUILES_VEGETALES 	:= VEG1 VEG2;
 set HUILES_ANIMALES 	:= ANI1 ANI2 ANI3;
 
 param prix_achat:
-		1		2		3		4		5		6 :=
+		janvier	fevrier	mars	avril	mai		juin	:=
 VEG1	110		130		110		120		100		90
 VEG2	120		130		140		110		120		100		
 ANI1	130		110		130		120		150		140
@@ -28,9 +28,3 @@ param durete_min = 3.0;
 param stock_max := 1000; 		# chaque huiles
 param cout_stock := 5;			# par tonne et par mois
 param stock_actuel := 500; 		# chaque huiles
-
-param x := 1;
-param evolution :
-							1	2	3 	4	5	6	:=
-{v in HUILES_VEGETALES}		0	1	2	3	4	5
-{a in HUILES_ANIMALES}		0	2	4	6	8	10;
