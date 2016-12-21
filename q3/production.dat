@@ -1,10 +1,11 @@
 set MOIS 	:=  1 2 3 4 5 6;
-
 set HUILES_VEGETALES 	:= VEG1 VEG2;
 set HUILES_ANIMALES 	:= ANI1 ANI2 ANI3;
 
-param prix_achat:
-		1		2		3		4		5		6 :=
+#-----------------------------------------------------------------------------
+# parametres autour des prix
+param prix_achat: 
+		1		2		3		4		5		6 := 	# les mois indicés (de janvier à Juin)
 VEG1	110		130		110		120		100		90
 VEG2	120		130		140		110		120		100		
 ANI1	130		110		130		120		150		140
@@ -12,9 +13,12 @@ ANI2	110		90		100		120		110		80
 ANI3	115		115		95		125		105		135;
 
 param prix_vente 	:= 150;
+#-----------------------------------------------------------------------------
+#parametres autour du raffinage
 param raf_max_vege 	:= 200;
 param raf_max_anim 	:= 250;
-
+#-------------------------------------------------------------------------------
+# paramettre autour de la dureté
 param durete :=
 VEG1	8.8 
 VEG2 	6.1
@@ -24,13 +28,24 @@ ANI3	5.0;
 
 param durete_max = 6.0;
 param durete_min = 3.0;
-
+#--------------------------------------------------------------------------------
+# parametres autour des stocks
 param stock_max := 1000; 		# chaque huiles
 param cout_stock := 5;			# par tonne et par mois
 param stock_actuel := 500; 		# chaque huiles
-
-param x := 1;
-param evolution :
+#--------------------------------------------------------------------------------
+# parametres autour de lévolution des prix (question 3)
+param x := 2;
+/*param evolution :
 							1	2	3 	4	5	6	:=
 {v in HUILES_VEGETALES}		0	1	2	3	4	5
 {a in HUILES_ANIMALES}		0	2	4	6	8	10;
+*/
+# j'ai pas voulu cherche l'erreur de syntaxe mais le tableau ci desosus marche tres bien !!
+param evolution :
+			1	2	3 	4	5	6	:=
+VEG1		0	1	2	3	4	5
+VEG2		0	1	2	3	4	5
+ANI1		0	2	4	6	8	10
+ANI2		0	2	4	6	8	10
+ANI3		0	2	4	6	8	10 ;
