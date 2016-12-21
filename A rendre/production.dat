@@ -1,22 +1,26 @@
-set MOIS 	:=  1 2 3 4 5 6;
+set MOIS 	:=  janvier fevrier mars avril mai juin;
+set CATEGORIES := HUILES_VEGETALES HUILES_ANIMALES;
+
 set HUILES_VEGETALES 	:= VEG1 VEG2;
 set HUILES_ANIMALES 	:= ANI1 ANI2 ANI3;
 
 #-----------------------------------------------------------------------------
-# parametres autour des prix
-param prix_achat: 
-		1		2		3		4		5		6 := 	# les mois indicés (de janvier à Juin)
+# paramètres autour des prix
+param prix_achat:
+		janvier	fevrier	mars	avril	mai		juin	:=
 VEG1	110		130		110		120		100		90
 VEG2	120		130		140		110		120		100		
 ANI1	130		110		130		120		150		140
 ANI2	110		90		100		120		110		80
 ANI3	115		115		95		125		105		135;
 
-param prix_vente 	:= 150;
+param prix_vente 	:= 150;		# prix vente par tonne produit
+
 #-----------------------------------------------------------------------------
 #parametres autour du raffinage
-param raf_max_vege 	:= 200;
-param raf_max_anim 	:= 250;
+param raf_max_vege 	:= 200;		# limite raffinage de l'huile végétale
+param raf_max_anim 	:= 250;		# limite raffinage de l'huile animale
+
 #-------------------------------------------------------------------------------
 # paramettre autour de la dureté
 param durete :=
@@ -26,20 +30,20 @@ ANI1 	2.0
 ANI2 	4.2
 ANI3	5.0; 
 
-param durete_max = 6.0;
-param durete_min = 3.0;
+param durete_max = 6.0;			# borne inf de dureté de produit final
+param durete_min = 3.0;			# borne sup de dureté de produit final
+
 #--------------------------------------------------------------------------------
 # parametres autour des stocks
 param stock_max := 1000; 		# chaque huiles
 param cout_stock := 5;			# par tonne et par mois
 param stock_actuel := 500; 		# chaque huiles
+
 #--------------------------------------------------------------------------------
 # parametres autour de lévolution des prix (question 3)
 param x := 2;
+
 param evolution :
-			1	2	3 	4	5	6	:=
-VEG1		0	1	2	3	4	5
-VEG2		0	1	2	3	4	5
-ANI1		0	2	4	6	8	10
-ANI2		0	2	4	6	8	10
-ANI3		0	2	4	6	8	10 ;
+					janvier	fevrier	mars	avril	mai		juin	:=
+HUILES_VEGETALES 	0		1		2		3		4		5
+HUILES_ANIMALES		0		2		4		6		8		10;
