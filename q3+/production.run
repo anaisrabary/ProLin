@@ -1,11 +1,11 @@
 option solver cplex ;
 
-reset ;
-model production.mod ;
-data production.dat ;
-solve ;
+reset ;						# mise à zéro par sécurité
+model production.mod ;		# inclure notre modèle
+data production.dat ;		# inclure nos données
+solve ;						# résoudre le problème
 
-# Ajouter ici l'affichage de votre programme...
+
 
 display { m in MOIS, t in TYPES } quantite_vendue[m, t];
 display { m in MOIS } quantite_total [m];

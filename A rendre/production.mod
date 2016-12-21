@@ -1,8 +1,9 @@
-set MOIS ordered;
+set MOIS ordered; # indices numériques de 0 à 6
 set HUILES_VEGETALES;
 set HUILES_ANIMALES;
+# Union des 2 paramètres :
 set TYPES := HUILES_VEGETALES union HUILES_ANIMALES;
-
+#...............................................................................
 # Q1 Etape 1
 param prix_achat { TYPES, MOIS } >= 0;
 param prix_vente 	>= 0;
@@ -37,12 +38,15 @@ var quantite_total { m in MOIS } = sum { t in TYPES } quantite_vendue[m, t];
 #------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------
 maximize profit:
-
+	# Q1, expression de profit :
 	#sum {m in MOIS , t in TYPES } (quantite_vendue[m, t] * prix_vente - quantite_achat[m, t] * prix_achat[t, m] - quantite_stock[m, t] * cout_stock);
+	
+	# Q3
 	# nouvelle fonction objectif avec le tableau des prix avec évolution
 	sum {m in MOIS , t in TYPES } (quantite_vendue[m, t] * prix_vente - quantite_achat[m, t] * prix_evolue[t, m] - quantite_stock[m, t] * cout_stock);
 #--------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------
+
 # contraintes autour du raffinage
 subject to raffiner_vegetales { m in MOIS } :
 	sum { v in HUILES_VEGETALES } quantite_vendue[m, v] <= raf_max_vege;
