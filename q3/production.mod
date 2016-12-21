@@ -21,6 +21,9 @@ param cout_stock >= 0;				# par tonne et par mois
 # Q3 
 param evolution{TYPES, MOIS} >= 0;
 param x >= 0;
+# tableau avec les nouveaux prix si évolution. x vaut 2 (donc 2%)
+param prix_evolue {t in TYPES, m in MOIS} = prix_achat[t,m] + prix_achat[t,m]* x * 0.01 *evolution [t,m] ;
+
 #------------------------------------------------------------------------------- 	
 # Quantité de stock mensuelle à la fin du mois (début à décembre)
 var quantite_stock { 0 .. 6, TYPES } >= 0; 
@@ -30,9 +33,6 @@ var quantite_vendue { MOIS, TYPES } >= 0;
 var quantite_achat { MOIS, TYPES } >= 0;	
 # c'est la somme des quantités vendues (donc raffinées) pour calculer la dureté
 var quantite_total { m in MOIS } = sum { t in TYPES } quantite_vendue[m, t];
-
-# tableau avec les nouveaux prix si évolution. x vaut 2 (donc 2%)
-var prix_evolue {t in TYPES, m in MOIS} = prix_achat[t,m] + prix_achat[t,m]* x * 0.01 *evolution [t,m] ;
 
 #------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------
