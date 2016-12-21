@@ -1,0 +1,26 @@
+option solver cplex ;
+
+reset ;						# mise à zéro par sécurité
+model production.mod ;		# inclure notre modèle
+data production.dat ;		# inclure nos données
+solve ;						# résoudre le problème
+
+
+
+# affichage des quantités vendues par mois et types
+display { m in MOIS, t in TYPES } quantite_vendue[m, t];
+
+# affichage de la quantité totale vendue
+display { m in MOIS} quantite_total [m];
+
+# affichage des quantités stockées par mois et types
+display { m in MOIS, t in TYPES } quantite_stock [m, t];
+
+# affichage des quantités achetés par mois et type
+display { m in MOIS, t in TYPES } quantite_achat [m, t]; 
+
+#affichage de la durete
+display { m in MOIS } (sum { t in TYPES } (quantite_vendue[m, t] * durete[t])) / quantite_total[m];
+
+# affichage des prix avec l'augmentation probable 
+display { t in TYPES, m in MOIS } prix_evolue[t,m] ;
