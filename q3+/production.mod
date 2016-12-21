@@ -1,9 +1,9 @@
 set MOIS ordered;
+set CATEGORIES;
 set HUILES_VEGETALES;
 set HUILES_ANIMALES;
 set TYPES := HUILES_VEGETALES union HUILES_ANIMALES;
 
-param prix_achat { TYPES, MOIS } >= 0;
 param prix_vente 	>= 0;
 param raf_max_vege 	>= 0;
 param raf_max_anim 	>= 0;
@@ -15,12 +15,19 @@ param durete_max >= 0;
 param stock_actuel >= 0;			# chaque huiles
 param stock_max >=  stock_actuel; 	# chaque huiles
 param cout_stock >= 0;				# par tonne et par mois	
+
+param x;
+param propotion_evolution{ CATEGORIES, MOIS } >= 0;
  	
 var quantite_stock { MOIS, TYPES } >= 0;
 var quantite_vendue { MOIS, TYPES } >= 0;
 var quantite_achat { MOIS, TYPES } >= 0;
 
+var prix_achat {  }
+
 var quantite_total { m in MOIS } = sum { t in TYPES } quantite_vendue[m, t];
+
+var prix_estimé
 
 maximize profit:
 	sum {m in MOIS , t in TYPES } (quantite_vendue[m, t] * prix_vente - quantite_achat[m, t] * prix_achat[t, m] - quantite_stock[m, t] * cout_stock);

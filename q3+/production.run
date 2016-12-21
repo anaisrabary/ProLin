@@ -8,7 +8,7 @@ solve ;
 # Ajouter ici l'affichage de votre programme...
 
 display { m in MOIS, t in TYPES } quantite_vendue[m, t];
-display { m in MOIS} quantite_total [m];
+display { m in MOIS } quantite_total [m];
 display { m in MOIS, t in TYPES } quantite_stock [m, t];
 display { m in MOIS, t in TYPES } quantite_achat [m, t];
 
